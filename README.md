@@ -53,3 +53,45 @@ As initially documented in our proposal, the structured data (Cardekho) and text
 1. Install dependencies: `pip install pandas numpy scikit-learn`
 2. Run structured models: `python 03_model_training.py`
 3. Run NLP models: Open and execute `05_nlp_evaluation.ipynb`
+## EDA, Feature Engineering and PCA
+
+### Exploratory Data Analysis (EDA)
+
+The used-car dataset was analyzed to understand its structure, distributions, missing values, duplicate records, and relationships between numerical and categorical features.
+
+Key EDA findings:
+- Original dataset contained 301 records and 9 attributes.
+- No missing values were found.
+- 2 duplicate records were identified and removed.
+- After duplicate removal, 299 unique records remained.
+- Present_Price showed a strong positive correlation with Selling_Price (r = 0.876).
+- Car_Age showed a weak negative correlation with Selling_Price (r = -0.234).
+
+### Feature Engineering
+
+The following feature engineering steps were performed:
+- Created `Car_Age` from `Year`.
+- Applied one-hot encoding to categorical variables:
+  - `Fuel_Type`
+  - `Seller_Type`
+  - `Transmission`
+- Created `Price_Ratio` for EDA analysis.
+- `Price_Ratio` was excluded from PCA/model features to prevent target leakage.
+
+### Principal Component Analysis (PCA)
+
+PCA was applied after standardizing the numerical feature set.
+
+- Original PCA features: 8
+- Selected principal components: 6
+- Variance retained: 95.09%
+
+The PCA transformation reduced the feature space from 8 dimensions to 6 dimensions while retaining approximately 95% of the total variance.
+
+### Generated Files
+
+- `03_eda_feature_engineering_pca.ipynb` – EDA, feature engineering and PCA notebook
+- `cleaned_eda_data.csv` – cleaned dataset
+- `pca_features.csv` – PCA-transformed features
+- `pca_model.pkl` – trained PCA transformation
+- `pca_scaler.pkl` – fitted feature scaler
