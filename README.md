@@ -1,8 +1,6 @@
-# used-car-price-prediction
+# Used Car Price Prediction 🚗💰
 
 **IT41033 NIA Mini Project - Automated Used Car Price Prediction System**
-
-# Used Car Price Prediction 🚗💰
 
 ## Project Overview
 
@@ -18,187 +16,116 @@ This project aims to build a robust Machine Learning pipeline to predict used ca
 
 ---
 
-# Team Contributions & Methodology
+## Team Contributions & Methodology (Work Division)
 
-## 1. Structured Data Pipeline (Members 1 - 4)
+### Member 1 – Data Collection & Understanding
 
-The structured data pipeline includes data cleaning, exploratory analysis, feature engineering, preprocessing, model training, and evaluation.
+**Student ID:** [To be updated by Member 1]
 
-### Member 3 - EDA, Feature Engineering & PCA
+- **Datasets:** Integrated and documented the Cardekho and Craigslist datasets.
+- **Dataset Documentation:** Created the data dictionary and outlined feature descriptions.
+- **Initial Data Analysis:** Performed the preliminary examination of data types, structure, and basic statistics.
+
+### Member 2 – Data Preprocessing
+
+**Student ID:** [To be updated by Member 2]
+
+- **Data Cleaning:** Handled missing values and removed duplicate records.
+- **Outlier Handling:** Addressed outliers using the Interquartile Range (IQR) method.
+- **Encoding & Transformation:** Applied Categorical Encoding (One-hot encoding), Binning for continuous variables, and Log transformations to normalize skewed data.
+
+### Member 3 – EDA, Feature Engineering & PCA
 
 **Student ID:** ITBIN-2313-0049
 
-The responsibilities of Member 3 include Exploratory Data Analysis (EDA), Feature Engineering, and Principal Component Analysis (PCA).
-
-### Exploratory Data Analysis (EDA)
-
+**Exploratory Data Analysis (EDA):**
 The Cardekho dataset was analyzed to understand its structure, quality, distributions, and relationships between features.
 
-Key EDA activities performed:
+- Original dataset contained 301 records and 9 features. After removing 2 duplicates, 299 unique records remained.
+- Examined missing values, dataset dimensions, and data types.
 
-- Examined the dataset dimensions and data types.
-- Checked for missing values.
-- Identified and removed duplicate records.
-- Analyzed numerical feature correlations.
-- Investigated the relationship between vehicle age and selling price.
-- Analyzed the relationship between present price and selling price.
-- Examined categorical features such as fuel type, seller type, and transmission.
+**Feature Engineering:**
 
-### Data Cleaning
+- **Car Age:** Created a `Car_Age` feature (`Car_Age = 2026 - Year`) to represent the age of each vehicle.
+- **Categorical Encoding:** Applied one-hot encoding for `Fuel_Type_Diesel`, `Fuel_Type_Petrol`, `Seller_Type_Individual`, and `Transmission_Manual`.
+- **Price Ratio:** Created a `Price_Ratio` feature (`Selling_Price / Present_Price`) for exploratory analysis (excluded from ML models to prevent target leakage).
 
-The original dataset contained:
+**Correlation Analysis:**
 
-- **301 records**
-- **9 features**
-- **0 missing values**
-- **2 duplicate records**
+- Strong positive relationship between `Present_Price` and `Selling_Price` (Correlation = 0.876).
+- Weak negative relationship between `Car_Age` and `Selling_Price` (Correlation = -0.234).
 
-The two duplicate records were removed, resulting in:
+**Principal Component Analysis (PCA):**
+Applied PCA to reduce dimensionality while preserving dataset information.
 
-- **299 unique records**
+- Features were standardized using `StandardScaler`.
+- **8 original features** were reduced to **6 principal components**, preserving **95.09%** of the total variance.
 
-### Feature Engineering
+### Member 4 – Machine Learning
 
-Several new features and transformations were introduced to improve the representation of the dataset.
+**Student ID:** [To be updated by Member 4]
 
-#### Car Age
+- **Model Selection:** Implemented various algorithms including Linear Regression, Random Forest, and Artificial Neural Networks (ANN).
+- **Model Training:** Trained the models on the preprocessed and PCA-transformed Cardekho dataset.
+- **Evaluation:** Compared models to find the best performing algorithm for structured data.
 
-A `Car_Age` feature was created from the `Year` attribute:
+### Member 5 – NLP & Evaluation
 
-`Car_Age = 2026 - Year`
+**Student ID:** ITBIN-2313-0014
 
-This represents the age of each vehicle and provides a more meaningful feature for price prediction.
-
-#### Categorical Encoding
-
-Categorical variables were converted into numerical representations using one-hot encoding.
-
-The following features were created:
-
-- `Fuel_Type_Diesel`
-- `Fuel_Type_Petrol`
-- `Seller_Type_Individual`
-- `Transmission_Manual`
-
-#### Price Ratio
-
-A `Price_Ratio` feature was created for exploratory analysis:
-
-`Price_Ratio = Selling_Price / Present_Price`
-
-However, this feature was excluded from PCA and machine-learning features because it directly uses the target variable `Selling_Price`, which could introduce target leakage.
-
-### Correlation Analysis
-
-A strong positive relationship was identified between `Present_Price` and `Selling_Price`:
-
-- **Correlation = 0.876**
-
-A weak negative relationship was identified between `Car_Age` and `Selling_Price`:
-
-- **Correlation = -0.234**
-
-These findings helped identify important factors related to used car prices.
-
----
-
-## 2. Principal Component Analysis (PCA)
-
-PCA was applied to reduce the dimensionality of the engineered feature set while preserving most of the information in the dataset.
-
-### PCA Features
-
-The following 8 features were used as PCA inputs:
-
-- `Present_Price`
-- `Kms_Driven`
-- `Owner`
-- `Car_Age`
-- `Fuel_Type_Diesel`
-- `Fuel_Type_Petrol`
-- `Seller_Type_Individual`
-- `Transmission_Manual`
-
-Before applying PCA, the features were standardized using `StandardScaler`.
-
-### PCA Results
-
-The cumulative explained variance was:
-
-| Principal Components | Cumulative Variance |
-| :------------------- | :------------------ |
-| PC1                   | 33.94%              |
-| PC1-PC2               | 54.00%              |
-| PC1-PC3               | 67.41%              |
-| PC1-PC4               | 79.45%              |
-| PC1-PC5               | 89.62%              |
-| **PC1-PC6**           | **95.09%**          |
-| PC1-PC7               | 99.74%              |
-| PC1-PC8               | 100.00%             |
-
-Based on the explained variance, **6 principal components were retained**, preserving **95.09% of the total variance**.
-
-Therefore:
-
-**8 original features → 6 principal components**
-
-This dimensionality reduction provides a more compact feature representation while retaining most of the information in the original feature set.
-
----
-
-## 3. NLP & Text Processing Pipeline (Member 5 - ITBIN-2313-0014)
-
-- **Text Preprocessing:** Converted vehicle descriptions to lowercase and removed special characters using regular expressions.
-- **Feature Extraction:** Applied `TfidfVectorizer` with `max_features=500` and English stop-word removal.
+- **Text Preprocessing:** Converted Craigslist vehicle descriptions to lowercase and removed special characters using regular expressions.
+- **Feature Extraction:** Applied `TfidfVectorizer` (`max_features=500`) with English stop-word removal.
 - **Hyperparameter Tuning:** Utilized `GridSearchCV` to find optimal parameters for the Random Forest Regressor.
 - **Cross-Validation:** Used 5-Fold Cross-Validation to evaluate model stability.
+- **Final Model Comparison:** Evaluated the NLP models using MAE, RMSE, and R² metrics to finalize the text-based prediction pipeline.
 
 ---
 
-# Generated Files
+## Generated Files
 
-The following files were generated as part of the EDA, Feature Engineering, and PCA process:
+The following files were generated as part of the pipeline:
 
-| File | Description |
-| :--- | :--- |
-| `03_eda_feature_engineering_pca.ipynb` | EDA, feature engineering, and PCA notebook |
-| `cleaned_eda_data.csv` | Cleaned dataset after duplicate removal |
-| `pca_features.csv` | Dataset containing the selected PCA features |
-| `pca_model.pkl` | Saved PCA transformation |
-| `pca_scaler.pkl` | Saved StandardScaler transformation |
-
----
-
-# Model Evaluation & Results
-
-## Structured Data Models (Cardekho)
-
-| Model | MAE | RMSE | R² Score |
-| :--- | :--- | :--- | :--- |
-| **Best Structured Model** | [Member 1-4 to fill] | [Member 1-4 to fill] | [Member 1-4 to fill] |
-
-## NLP Models (Craigslist)
-
-| Model | MAE | RMSE | R² Score |
-| :--- | :--- | :--- | :--- |
-| **Linear Regression (Untuned)** | $5,873.28 | $7,740.03 | 0.5817 |
-| **Random Forest (Tuned)** | **$5,214.45** | **$7,259.57** | **0.6320** |
-
-The NLP Random Forest model achieved an Average K-Fold R² Score of 0.6477.
+| File                                   | Description                                  |
+| :------------------------------------- | :------------------------------------------- |
+| `03_eda_feature_engineering_pca.ipynb` | EDA, feature engineering, and PCA notebook   |
+| `05_nlp_evaluation.ipynb`              | NLP text processing and evaluation notebook  |
+| `cleaned_eda_data.csv`                 | Cleaned dataset after duplicate removal      |
+| `pca_features.csv`                     | Dataset containing the selected PCA features |
+| `pca_model.pkl`                        | Saved PCA transformation                     |
+| `pca_scaler.pkl`                       | Saved StandardScaler transformation          |
 
 ---
 
-# Known Limitations
+## Final Model Evaluation & Results
 
-The structured data (Cardekho) and textual data (Craigslist) belong to different regional markets.
+### 1. Structured Data Models (Cardekho) - By Member 4
 
-Therefore, the two datasets were not merged row-by-row. The structured and NLP pipelines were kept independent to avoid creating artificial or unreliable relationships between unrelated vehicle records.
+| Model                 | MAE                | RMSE               | R² Score           |
+| :-------------------- | :----------------- | :----------------- | :----------------- |
+| **Linear Regression** | [Member 4 to fill] | [Member 4 to fill] | [Member 4 to fill] |
+| **Random Forest**     | [Member 4 to fill] | [Member 4 to fill] | [Member 4 to fill] |
+| **ANN**               | [Member 4 to fill] | [Member 4 to fill] | [Member 4 to fill] |
+
+### 2. NLP Models (Craigslist) - By Member 5
+
+| Model                           | MAE           | RMSE          | R² Score   |
+| :------------------------------ | :------------ | :------------ | :--------- |
+| **Linear Regression (Untuned)** | $5,873.28     | $7,740.03     | 0.5817     |
+| **Random Forest (Tuned)**       | **$5,214.45** | **$7,259.57** | **0.6320** |
+
+_Note: The NLP Random Forest model achieved an Average K-Fold R² Score of 0.6477, proving that textual descriptions alone hold significant predictive power._
 
 ---
 
-# How to Run
+## Known Limitations
 
-### Install Dependencies
+As initially documented, the structured data (Cardekho - Indian Market) and textual data (Craigslist - US Market) belong to different regional markets. Therefore, the datasets were not merged row-by-row. The structured and NLP pipelines were kept strictly independent to avoid creating artificial or unreliable relationships between unrelated vehicle records.
 
-```bash
-pip install pandas numpy scikit-learn matplotlib seaborn jupyter
+---
+
+## How to Run
+
+1. **Install Dependencies:**
+   ```bash
+   pip install pandas numpy scikit-learn matplotlib seaborn jupyter streamlit
+   ```
