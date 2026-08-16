@@ -132,3 +132,12 @@ As initially documented, the structured data (Cardekho - Indian Market) and text
    ```bash
    pip install pandas numpy scikit-learn matplotlib seaborn jupyter streamlit
    ```
+2. **Run the Preprocessing and Training Pipeline:**
+   ```bash
+   python 02_data_preprocessing.py
+   python random_forest_training.py
+   ```
+3. **Launch the Web Application:**
+   ```bash
+   streamlit run app.py
+   ```  
