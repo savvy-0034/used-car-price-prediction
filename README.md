@@ -1,10 +1,10 @@
-# Used Car Price Prediction 🚗💰
+# Used Vehicle Price Prediction 🚗💰
 
-**IT41033 NIA Mini Project - Automated Used Car Price Prediction System**
+**IT41033 NIA Mini Project - Automated Used Vehicle Price Prediction System**
 
 ## Project Overview
 
-This project aims to build a robust Machine Learning pipeline to predict used car prices. To achieve a comprehensive analysis, our team divided the project into two main pipelines:
+This project aims to build a robust Machine Learning pipeline to predict used vehicle prices. To achieve a comprehensive analysis, our team divided the project into two main pipelines:
 
 1. **Structured Data Analysis:** Predicting prices based on numerical and categorical features such as Year, Mileage, Fuel Type, Present Price, and other vehicle attributes using the Cardekho dataset.
 2. **Unstructured Data Analysis (NLP):** Predicting prices based on user-generated vehicle descriptions using the Craigslist dataset.
@@ -62,7 +62,7 @@ This project aims to build a robust Machine Learning pipeline to predict used ca
 
 **Student ID:** ITBIN-2313-0034
 
-- **Visualization:** Generated Actual vs Predicted Car Price visualization (`actual_vs_predicted.png`).
+- **Visualization:** Generated Actual vs Predicted Vehicle Price visualization (`actual_vs_predicted.png`).
 - **Deployment:** Built the interactive Streamlit-based web application interface (`app.py`) to deploy the final predictive model.
 
 ### Member 5 – Structured Model Training, NLP & Evaluation

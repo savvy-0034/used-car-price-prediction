@@ -11,20 +11,20 @@ X_train = pd.read_csv("X_train.csv")
 
 # Page configuration
 st.set_page_config(
-    page_title="Used Car Price Predictor",
+    page_title="Used Vehicle Price Predictor",
     page_icon="🚗",
     layout="centered"
 )
 
 # Title
-st.title("🚗 Used Car Price Prediction System")
-st.write("Enter the details of the car to predict its selling price.")
+st.title("🚗 Used Vehicle Price Prediction System")
+st.write("Enter the details of the vehicle to predict its selling price.")
 
 st.divider()
 
 # Input fields
 car_name = st.selectbox(
-    "Car Name",
+    "Vehicle Name",
     sorted([
         col.replace("Car_Name_", "")
         for col in X_train.columns
