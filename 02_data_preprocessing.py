@@ -1,61 +1,60 @@
 import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
 
 # Load the cleaned dataset
 df = pd.read_csv("cleaned_car_data.csv")
 
 print("Cleaned dataset loaded successfully!")
+print("\nOriginal dataset shape:", df.shape)
 
-print("\nDataset shape:")
-print(df.shape)
+# ==========================================
+# NEW ADDITIONS: Member 2 Preprocessing Steps
+# ==========================================
 
-print("\nFirst 5 rows:")
-print(df.head())
+# 1. IQR Outlier Removal (Present_Price)
+Q1 = df['Present_Price'].quantile(0.25)
+Q3 = df['Present_Price'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
 
-print("\nData types:")
-print(df.dtypes)
+# Filter out the outliers
+df = df[(df['Present_Price'] >= lower_bound) & (df['Present_Price'] <= upper_bound)]
+print("\nDataset shape after IQR outlier removal:", df.shape)
 
-# Check categorical columns
-print("\nCategorical columns:")
-print(df[["Car_Name", "Fuel_Type", "Seller_Type", "Transmission"]].head())
+# 2. Binning (Discretization) for Kms_Driven
+bins = [0, 30000, 60000, 100000, np.inf]
+labels = ['Low', 'Medium', 'High', 'Very_High']
+df['Mileage_Category'] = pd.cut(df['Kms_Driven'], bins=bins, labels=labels)
 
-print("\nUnique values:")
-print("Fuel Type:", df["Fuel_Type"].unique())
-print("Seller Type:", df["Seller_Type"].unique())
-print("Transmission:", df["Transmission"].unique())
-# Convert categorical columns into numerical values
+# 3. Log Transformation for Selling_Price
+df['Selling_Price'] = np.log1p(df['Selling_Price'])
 
+# ==========================================
+# CATEGORICAL ENCODING & SPLITTING
+# ==========================================
+
+# Convert categorical columns into numerical values (Included new 'Mileage_Category')
 df = pd.get_dummies(
     df,
-    columns=["Car_Name", "Fuel_Type", "Seller_Type", "Transmission"],
+    columns=["Car_Name", "Fuel_Type", "Seller_Type", "Transmission", "Mileage_Category"],
     drop_first=True,
     dtype=int
 )
 
 print("\nDataset after categorical encoding:")
 print(df.head())
+print("\nNew dataset shape:", df.shape)
 
-print("\nNew dataset shape:")
-print(df.shape)
-
-print("\nNew column names:")
-print(df.columns.tolist())
 # Separate features and target variable
-
 X = df.drop("Selling_Price", axis=1)
 y = df["Selling_Price"]
 
-print("\nFeatures (X) shape:")
-print(X.shape)
+print("\nFeatures (X) shape:", X.shape)
+print("Target (y) shape:", y.shape)
 
-print("\nTarget (y) shape:")
-print(y.shape)
-
-print("\nTarget variable:")
-print(y.head())
 # Split dataset into training and testing sets
-
-from sklearn.model_selection import train_test_split
-
 X_train, X_test, y_train, y_test = train_test_split(
     X,
     y,
@@ -63,18 +62,10 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-print("\nTraining data shape:")
-print(X_train.shape)
+print("\nTraining data shape:", X_train.shape)
+print("Testing data shape:", X_test.shape)
 
-print("\nTesting data shape:")
-print(X_test.shape)
-
-print("\nTraining target shape:")
-print(y_train.shape)
-print("\nTesting target shape:")
-print(y_test.shape)
 # Save preprocessed datasets
-
 X_train.to_csv("X_train.csv", index=False)
 X_test.to_csv("X_test.csv", index=False)
 y_train.to_csv("y_train.csv", index=False)

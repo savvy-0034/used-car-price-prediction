@@ -20,35 +20,11 @@ This project aims to build a robust Machine Learning pipeline to predict used ca
 
 ### Member 1 – Data Collection & Understanding
 
-**Student ID:** ITBIN-2313-0018
+**Student ID:** [To be updated by Member 1]
 
-### Responsibilities
-- Data Collection
-- Data Understanding
-- Dataset Exploration
-- Feature Identification
-- Missing Value Analysis
-- Dataset Documentation
-
-### Datasets Used
-1. Vehicle Dataset from Cardekho
-2. Craigslist Vehicles Dataset (vehicles.csv)
-
-### Work Completed
-- Collected and prepared project datasets.
-- Loaded datasets into Google Colab using Python and Pandas.
-- Examined dataset structure using `head()`, `shape()`, and `columns`.
-- Identified numerical, categorical, and text-based features.
-- Performed missing value analysis.
-- Inspected duplicate records and dataset quality.
-- Documented key observations and findings.
-- Created and uploaded `01_data_understanding.ipynb` to the GitHub repository.
-
-### Key Findings
-- Vehicle price was identified as the target variable.
-- The dataset contains both structured and unstructured data.
-- Missing values were identified in attributes such as condition, cylinders, drive, and type.
-- Vehicle descriptions were identified for future NLP processing.
+- **Datasets:** Integrated and documented the Cardekho and Craigslist datasets.
+- **Dataset Documentation:** Created the data dictionary and outlined feature descriptions.
+- **Initial Data Analysis:** Performed the preliminary examination of data types, structure, and basic statistics.
 
 ### Member 2 – Data Preprocessing
 
@@ -61,9 +37,7 @@ This project aims to build a robust Machine Learning pipeline to predict used ca
 ### Member 3 – EDA, Feature Engineering & PCA
 
 **Student ID:** ITBIN-2313-0049
-
 **Exploratory Data Analysis (EDA):**
-The Cardekho dataset was analyzed to understand its structure, quality, distributions, and relationships between features.
 
 - Original dataset contained 301 records and 9 features. After removing 2 duplicates, 299 unique records remained.
 - Examined missing values, dataset dimensions, and data types.
@@ -80,35 +54,18 @@ The Cardekho dataset was analyzed to understand its structure, quality, distribu
 - Weak negative relationship between `Car_Age` and `Selling_Price` (Correlation = -0.234).
 
 **Principal Component Analysis (PCA):**
-Applied PCA to reduce dimensionality while preserving dataset information.
 
 - Features were standardized using `StandardScaler`.
 - **8 original features** were reduced to **6 principal components**, preserving **95.09%** of the total variance.
 
-### Member 4 – Model Evaluation & Deployment 
+### Member 4 – Model Evaluation & Deployment
 
 **Student ID:** ITBIN-2313-0034
 
-#### Tasks Completed
-
-- Implemented Random Forest Regressor for used car price prediction.
-- Trained and saved the Random Forest model (`random_forest_model.pkl`).
-- Evaluated model performance using:
-  - Mean Absolute Error (MAE): 1.27
-  - Mean Squared Error (MSE): 5.55
-  - R² Score: 0.78
-- Generated Actual vs Predicted Car Price visualization.
-- Developed and tested the prediction module.
-- Built a Streamlit-based web application interface.
-- Integrated the trained machine learning model with the prediction system.
-
-#### Output Files
-
-- `random_forest_training.py`
-- `random_forest_model.pkl`
-- `04_model_evaluation.py`
-- `actual_vs_predicted.png`
-- `app.py`
+- **Model Training:** Implemented and trained a Random Forest Regressor for used car price prediction.
+- **Model Export:** Trained and saved the Random Forest model (`random_forest_model.pkl`).
+- **Visualization:** Generated Actual vs Predicted Car Price visualization (`actual_vs_predicted.png`).
+- **Deployment:** Built a Streamlit-based web application interface (`app.py`) and integrated the trained machine learning model with the prediction system.
 
 ### Member 5 – NLP & Evaluation
 
@@ -124,16 +81,21 @@ Applied PCA to reduce dimensionality while preserving dataset information.
 
 ## Generated Files
 
-The following files were generated as part of the pipeline:
+The following files are generated as part of the pipeline:
 
-| File                                   | Description                                  |
-| :------------------------------------- | :------------------------------------------- |
-| `03_eda_feature_engineering_pca.ipynb` | EDA, feature engineering, and PCA notebook   |
-| `05_nlp_evaluation.ipynb`              | NLP text processing and evaluation notebook  |
-| `cleaned_eda_data.csv`                 | Cleaned dataset after duplicate removal      |
-| `pca_features.csv`                     | Dataset containing the selected PCA features |
-| `pca_model.pkl`                        | Saved PCA transformation                     |
-| `pca_scaler.pkl`                       | Saved StandardScaler transformation          |
+| File                                   | Description                                      |
+| :------------------------------------- | :----------------------------------------------- |
+| `cleaned_eda_data.csv`                 | Cleaned dataset after duplicate removal          |
+| `X_train.csv` / `X_test.csv`           | Training and testing input features              |
+| `y_train.csv` / `y_test.csv`           | Training and testing target variables            |
+| `03_eda_feature_engineering_pca.ipynb` | EDA, feature engineering, and PCA notebook       |
+| `05_nlp_evaluation.ipynb`              | NLP text processing and evaluation notebook      |
+| `pca_features.csv`                     | Dataset containing the selected PCA features     |
+| `pca_model.pkl`                        | Saved PCA transformation                         |
+| `pca_scaler.pkl`                       | Saved StandardScaler transformation              |
+| `random_forest_model.pkl`              | Saved Random Forest model for web app deployment |
+| `app.py`                               | Streamlit web application script                 |
+| `actual_vs_predicted.png`              | Visualization of the model's accuracy            |
 
 ---
 
@@ -141,11 +103,9 @@ The following files were generated as part of the pipeline:
 
 ### 1. Structured Data Models (Cardekho) - By Member 4
 
-| Model                 | MAE                | RMSE               | R² Score           |
-| :-------------------- | :----------------- | :----------------- | :----------------- |
-| **Linear Regression** | [Member 4 to fill] | [Member 4 to fill] | [Member 4 to fill] |
-| **Random Forest**     | [Member 4 to fill] | [Member 4 to fill] | [Member 4 to fill] |
-| **ANN**               | [Member 4 to fill] | [Member 4 to fill] | [Member 4 to fill] |
+| Model             | MAE  | MSE  | R² Score   |
+| :---------------- | :--- | :--- | :--------- |
+| **Random Forest** | 1.27 | 5.55 | **0.7800** |
 
 ### 2. NLP Models (Craigslist) - By Member 5
 
@@ -167,10 +127,13 @@ As initially documented, the structured data (Cardekho - Indian Market) and text
 ## How to Run
 
 1. **Install Dependencies:**
+
    ```bash
    pip install pandas numpy scikit-learn matplotlib seaborn jupyter streamlit
+
    ```
 
 2. **Run the Web Application:**
    ```bash
    streamlit run app.py
+   ```
