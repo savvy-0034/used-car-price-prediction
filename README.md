@@ -85,7 +85,9 @@ Applied PCA to reduce dimensionality while preserving dataset information.
 - Features were standardized using `StandardScaler`.
 - **8 original features** were reduced to **6 principal components**, preserving **95.09%** of the total variance.
 
-### Member 4 – Model Evaluation & Deployment (ITBIN-2313-0034)
+### Member 4 – Model Evaluation & Deployment 
+
+**Student ID:** ITBIN-2313-0034
 
 #### Tasks Completed
 
