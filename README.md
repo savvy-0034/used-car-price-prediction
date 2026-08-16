@@ -20,6 +20,31 @@ This project aims to build a robust Machine Learning pipeline to predict used ca
 - **Preprocessing:** Encoded categorical variables (Fuel_Type, Seller_Type, Transmission) and scaled numerical features.
 - **Model Training:** Trained multiple regression models (e.g., Linear Regression, Decision Trees) to predict `Selling_Price`.
 
+## Model Evaluation & Deployment (Member 4 - ITBIN-2313-0034)
+
+### Tasks Completed
+- Evaluated the trained machine learning model.
+- Calculated model performance metrics:
+  - Mean Absolute Error (MAE): 1.27
+  - Mean Squared Error (MSE): 5.55
+  - R² Score: 0.78
+- Generated Actual vs Predicted Car Price visualization.
+- Developed and tested the prediction module.
+- Built a Streamlit-based web application interface.
+- Integrated the trained machine learning model with the user interface.
+- Performed end-to-end testing of the prediction system.
+
+### Technologies Used
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Matplotlib
+- Streamlit
+
+### Sample Prediction Result
+The application successfully predicted a used car selling price of **5.51 Lakhs** using sample vehicle data entered through the Streamlit interface.
+
 ### 2. NLP & Text Processing Pipeline (Member 5 - ITBIN-2313-0014)
 
 - **Text Preprocessing:** Converted vehicle descriptions to lowercase and removed special characters using regular expressions.
