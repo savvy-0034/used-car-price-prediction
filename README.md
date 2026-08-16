@@ -61,13 +61,28 @@ Applied PCA to reduce dimensionality while preserving dataset information.
 - Features were standardized using `StandardScaler`.
 - **8 original features** were reduced to **6 principal components**, preserving **95.09%** of the total variance.
 
-### Member 4 – Machine Learning
+### Member 4 – Model Evaluation & Deployment (ITBIN-2313-0034)
 
-**Student ID:** [To be updated by Member 4]
+#### Tasks Completed
 
-- **Model Selection:** Implemented various algorithms including Linear Regression, Random Forest, and Artificial Neural Networks (ANN).
-- **Model Training:** Trained the models on the preprocessed and PCA-transformed Cardekho dataset.
-- **Evaluation:** Compared models to find the best performing algorithm for structured data.
+- Implemented Random Forest Regressor for used car price prediction.
+- Trained and saved the Random Forest model (`random_forest_model.pkl`).
+- Evaluated model performance using:
+  - Mean Absolute Error (MAE): 1.27
+  - Mean Squared Error (MSE): 5.55
+  - R² Score: 0.78
+- Generated Actual vs Predicted Car Price visualization.
+- Developed and tested the prediction module.
+- Built a Streamlit-based web application interface.
+- Integrated the trained machine learning model with the prediction system.
+
+#### Output Files
+
+- `random_forest_training.py`
+- `random_forest_model.pkl`
+- `04_model_evaluation.py`
+- `actual_vs_predicted.png`
+- `app.py`
 
 ### Member 5 – NLP & Evaluation
 
