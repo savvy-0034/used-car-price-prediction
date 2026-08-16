@@ -58,24 +58,23 @@ This project aims to build a robust Machine Learning pipeline to predict used ca
 - Features were standardized using `StandardScaler`.
 - **8 original features** were reduced to **6 principal components**, preserving **95.09%** of the total variance.
 
-### Member 4 – Model Evaluation & Deployment
+### Member 4 – Visualization & Web Deployment
 
 **Student ID:** ITBIN-2313-0034
 
-- **Model Training:** Implemented and trained a Random Forest Regressor for used car price prediction.
-- **Model Export:** Trained and saved the Random Forest model (`random_forest_model.pkl`).
 - **Visualization:** Generated Actual vs Predicted Car Price visualization (`actual_vs_predicted.png`).
-- **Deployment:** Built a Streamlit-based web application interface (`app.py`) and integrated the trained machine learning model with the prediction system.
+- **Deployment:** Built the interactive Streamlit-based web application interface (`app.py`) to deploy the final predictive model.
 
-### Member 5 – NLP & Evaluation
+### Member 5 – Structured Model Training, NLP & Evaluation
 
-**Student ID:** ITBIN-2313-0014
+**Student ID:** ITBIN-2313-0014 (Pulasthi Avinash)
 
-- **Text Preprocessing:** Converted Craigslist vehicle descriptions to lowercase and removed special characters using regular expressions.
-- **Feature Extraction:** Applied `TfidfVectorizer` (`max_features=500`) with English stop-word removal.
-- **Hyperparameter Tuning:** Utilized `GridSearchCV` to find optimal parameters for the Random Forest Regressor.
-- **Cross-Validation:** Used 5-Fold Cross-Validation to evaluate model stability.
-- **Final Model Comparison:** Evaluated the NLP models using MAE, RMSE, and R² metrics to finalize the text-based prediction pipeline.
+- **Structured Data Modeling:** Developed, trained, and evaluated multiple regression models (Linear Regression, Artificial Neural Network, and Random Forest Regressor) for the Cardekho dataset.
+- **Model Export:** Exported the highest-performing structured model (`random_forest_model.pkl`) for web deployment.
+- **Text Preprocessing & NLP:** Converted Craigslist vehicle descriptions to lowercase and removed special characters using regular expressions.
+- **NLP Feature Extraction:** Applied `TfidfVectorizer` (`max_features=500`) with English stop-word removal.
+- **Hyperparameter Tuning:** Utilized `GridSearchCV` to find optimal parameters for the NLP Random Forest Regressor.
+- **Final Model Comparison:** Evaluated both structured and NLP models using MAE, MSE, RMSE, and R² metrics to finalize the pipelines.
 
 ---
 
@@ -83,31 +82,34 @@ This project aims to build a robust Machine Learning pipeline to predict used ca
 
 The following files are generated as part of the pipeline:
 
-| File                                   | Description                                      |
-| :------------------------------------- | :----------------------------------------------- |
-| `cleaned_eda_data.csv`                 | Cleaned dataset after duplicate removal          |
-| `X_train.csv` / `X_test.csv`           | Training and testing input features              |
-| `y_train.csv` / `y_test.csv`           | Training and testing target variables            |
-| `03_eda_feature_engineering_pca.ipynb` | EDA, feature engineering, and PCA notebook       |
-| `05_nlp_evaluation.ipynb`              | NLP text processing and evaluation notebook      |
-| `pca_features.csv`                     | Dataset containing the selected PCA features     |
-| `pca_model.pkl`                        | Saved PCA transformation                         |
-| `pca_scaler.pkl`                       | Saved StandardScaler transformation              |
-| `random_forest_model.pkl`              | Saved Random Forest model for web app deployment |
-| `app.py`                               | Streamlit web application script                 |
-| `actual_vs_predicted.png`              | Visualization of the model's accuracy            |
+| File                                   | Description                                             |
+| :------------------------------------- | :------------------------------------------------------ |
+| `cleaned_eda_data.csv`                 | Cleaned dataset after duplicate removal                 |
+| `X_train.csv` / `X_test.csv`           | Training and testing input features                     |
+| `y_train.csv` / `y_test.csv`           | Training and testing target variables                   |
+| `03_eda_feature_engineering_pca.ipynb` | EDA, feature engineering, and PCA notebook              |
+| `05_nlp_evaluation.ipynb`              | NLP text processing and evaluation notebook             |
+| `pca_features.csv`                     | Dataset containing the selected PCA features            |
+| `pca_model.pkl`                        | Saved PCA transformation                                |
+| `pca_scaler.pkl`                       | Saved StandardScaler transformation                     |
+| `random_forest_training.py`            | Model training script for structured data (LR, ANN, RF) |
+| `random_forest_model.pkl`              | Saved Random Forest model for web app deployment        |
+| `app.py`                               | Streamlit web application script                        |
+| `actual_vs_predicted.png`              | Visualization of the model's accuracy                   |
 
 ---
 
 ## Final Model Evaluation & Results
 
-### 1. Structured Data Models (Cardekho) - By Member 4
+### 1. Structured Data Models (Cardekho) - Trained by Member 5
 
-| Model             | MAE  | MSE  | R² Score   |
-| :---------------- | :--- | :--- | :--------- |
-| **Random Forest** | 1.27 | 5.55 | **0.7800** |
+| Model                   | MAE     | MSE       | R² Score    |
+| :---------------------- | :------ | :-------- | :---------- |
+| **Linear Regression**   | 0.1352  | 0.0395    | 0.9208      |
+| **ANN (MLP Regressor)** | 48.4459 | 5410.0599 | -10857.1916 |
+| **Random Forest**       | 0.0927  | 0.0213    | **0.9572**  |
 
-### 2. NLP Models (Craigslist) - By Member 5
+### 2. NLP Models (Craigslist) - Trained by Member 5
 
 | Model                           | MAE           | RMSE          | R² Score   |
 | :------------------------------ | :------------ | :------------ | :--------- |
@@ -127,13 +129,6 @@ As initially documented, the structured data (Cardekho - Indian Market) and text
 ## How to Run
 
 1. **Install Dependencies:**
-
    ```bash
    pip install pandas numpy scikit-learn matplotlib seaborn jupyter streamlit
-
-   ```
-
-2. **Run the Web Application:**
-   ```bash
-   streamlit run app.py
    ```
