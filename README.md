@@ -129,3 +129,7 @@ As initially documented, the structured data (Cardekho - Indian Market) and text
    ```bash
    pip install pandas numpy scikit-learn matplotlib seaborn jupyter streamlit
    ```
+
+2. **Run the Web Application:**
+   ```bash
+   streamlit run app.py
