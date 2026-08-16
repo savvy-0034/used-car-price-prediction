@@ -20,11 +20,35 @@ This project aims to build a robust Machine Learning pipeline to predict used ca
 
 ### Member 1 – Data Collection & Understanding
 
-**Student ID:** [To be updated by Member 1]
+**Student ID:** ITBIN-2313-0018
 
-- **Datasets:** Integrated and documented the Cardekho and Craigslist datasets.
-- **Dataset Documentation:** Created the data dictionary and outlined feature descriptions.
-- **Initial Data Analysis:** Performed the preliminary examination of data types, structure, and basic statistics.
+### Responsibilities
+- Data Collection
+- Data Understanding
+- Dataset Exploration
+- Feature Identification
+- Missing Value Analysis
+- Dataset Documentation
+
+### Datasets Used
+1. Vehicle Dataset from Cardekho
+2. Craigslist Vehicles Dataset (vehicles.csv)
+
+### Work Completed
+- Collected and prepared project datasets.
+- Loaded datasets into Google Colab using Python and Pandas.
+- Examined dataset structure using `head()`, `shape()`, and `columns`.
+- Identified numerical, categorical, and text-based features.
+- Performed missing value analysis.
+- Inspected duplicate records and dataset quality.
+- Documented key observations and findings.
+- Created and uploaded `01_data_understanding.ipynb` to the GitHub repository.
+
+### Key Findings
+- Vehicle price was identified as the target variable.
+- The dataset contains both structured and unstructured data.
+- Missing values were identified in attributes such as condition, cylinders, drive, and type.
+- Vehicle descriptions were identified for future NLP processing.
 
 ### Member 2 – Data Preprocessing
 
